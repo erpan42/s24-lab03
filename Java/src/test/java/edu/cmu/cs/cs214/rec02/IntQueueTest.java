@@ -123,5 +123,33 @@ public class IntQueueTest {
         }
     }
 
+    @Test
+    public void testClear() {
+        for (int i = 0; i < 5; i++) {
+            mQueue.enqueue(i);
+        }
+        mQueue.clear();
+        assertTrue(mQueue.isEmpty());
+        assertEquals(0, mQueue.size());
+        assertNull(mQueue.dequeue());
+    }
 
+    @Test
+    public void testEnsureCapacity() {
+        for (int i = 0; i < 10; i++) {
+            mQueue.enqueue(i);
+        }
+
+        int elementsToRemove = 3;
+        for (int i = 0; i < elementsToRemove; i++) {
+            mQueue.dequeue();
+        }
+ 
+        for (int i = 0; i < 10; i++) {
+            mQueue.enqueue(i + 10);
+        }
+    }
+    
+
+    
 }
